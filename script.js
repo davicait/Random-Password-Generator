@@ -1,11 +1,10 @@
-var generateBtn = document.querySelector("generate");
-var copyBtn = document.querySelector("copy");
+// var generate = document.getElementById("password");
+var copyBtn = document.getElementById("copy");
+var generateEl = document.querySelector('#generate');
 
-//generate random passowrd
-function generate() {
 
-    //set password length
-    // let length = confirm("How long would you like your password to be?");
+//generate random password
+generateEl.addEventListener("click", function() {
 
     //possible password values
     let values = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()"
@@ -17,12 +16,20 @@ function generate() {
         password = password + values.charAt(Math.floor(Math.random() * Math.floor(values.length -1)));
     }
 
-    // Add password to text box/display area
-    // button.addEventListener("click", function() {
-    //     document.getElementbyId("generate").value = password;
-    // }) 
+    console.log(password);
 
+    // Add password to text box/display area
+    document.getElementById('password').value = password;
     
-    generateBtn.addEventListener("click", password);
-    
+})
+
+// Function to copy password to clipboard
+
+function copyPassword() {
+
+    document.getElementById('password').select();
+
+    document.execCommand("Copy");
+
+    alert("Password copied to clipboard!")
 }
